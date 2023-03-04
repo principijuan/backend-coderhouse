@@ -17,7 +17,12 @@ class ProductManager {
         if(product){
             return "Existe el producto con este código"
         }
-        this.products.push({... newProduct, id: this.products.length + 1})
+
+        if (this.products.length === 0) {
+            this.products.push({id: 1, ... newProduct})
+        } else {
+            this.products.push({id: this.products[this.product.length-1].id + 1, ... newProduct})
+        }
     }
     getProducts(){
         return this.products
